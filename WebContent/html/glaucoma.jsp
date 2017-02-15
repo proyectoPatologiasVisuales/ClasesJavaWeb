@@ -1,23 +1,29 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-    <!--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />-->
   <title>MIRATE_EL_OJO</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="Estilos.css" media="screen" />
     <link rel="icon" href="../img/logoico.ico">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-      body{direction:rtl;
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: skyblue ;
+      padding: 25px;
+    }
+H1{size:4 color:pink}
+body{direction:rtl;
      background-image: url(../img/fondo.jpg);
      background-color: rgb(255, 255, 255);
      background-attachment: fixed;
@@ -28,15 +34,10 @@
      color:#5E6066;
     font-family:GESSTwoLight,GESSTwoMediumRegular,Droid Arabic Kufi,Helvetica,sans-serif;
     font-size:16px}
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: skyblue;
-      padding: 25px;
-    }
   </style>
 </head>
-<body>
-
+<body  background="../img/fondo.jpg"  width="1500" heigth="1500">
+  
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -59,61 +60,63 @@
      <p>
     <button type="button" class="btn btn-info">
         <a href="busqueda.html">  
-            <span class="glyphicon glyphicon-search"></span> BÃšSQUEDA</a>
+            <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
       </ul>
     </div>
   </div>
 </nav>
+<br><br>
 
-  
-<div class="container-fluid bg-3 text-center">    
-
-<footer class="container-fluid text-center">
-  <h2>TEST</h2>
-</footer>
-  <br>  <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-  <div class="row">
-   <form class="form-horizontal">
- 
-  <div class="form-group has-success has-feedback">
-      
-    <label class="col-sm-2 control-label" for="inputSuccess">
-   </label>
-          
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputSuccess">
-     <!-- <span class="glyphicon glyphicon-ok form-control-feedback"></span>-->
-    </div>
-  </div>
-
-</form>
-    </div>
-  </div>
+<div class="container">
+  <CENTER ><h2>GLAUCOMA 1</h2>
+            
+    <center><table class="table table-bordered">
+    <tbody>
+    <tr>
+        <td><img src="../img/glaucoma-test1.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="250">
+          DESCRIPCIÓN <br>${patologia.descripcion_patologia}</td>
+   </tr>
+    </tbody>
+        <tbody>
+      <tr>
+     
+        <td><center>CAUSA <br>${patologia.causa_patologia}</center></td>
+      </tr>
+      <tr>
+          <td><center>TRATAMIENTO <br>${patologia.tratamiento_patologia}</center></td>
+      </tr>
+      <tr>
+        <td><center>SINTOMAS</center></td>
+      </tr>
+        </table>
+        <CENTER ><h2>GLAUCOMA 2</h2>
+        <table class="table table-bordered">
+    <tbody>
+    <tr>
+        <td><img src="../img/glaucoma-test2.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">DESCRIPCION</td>
     
-  
-
- 
-<div class="container" >
-  <Center>
-      
-      <button type="button" class="btn btn-success">NO LO SE</button> 
-      <button type="button" class="btn btn-primary">NO</button>
-      <button type="button" class="btn btn-default">SI </button>
-  
-  
-      </Center>
-</div>
-
-<!--<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>-->
-
-</body>
+   
+   </tr>
+    </tbody>
+      <tr>
+     
+        <td><center>CAUSAS</center></td>
+      </tr>
+      <tr>
+        <td><center>TRATAMIENTO</center></td>
+        
+       
+      </tr>
+      <tr>
+        <td><center>SINTOMAS</center></td>
+     
+        
+      </tr>
+        </table>
+      </center>
+    </CENTER>
+    </div>
+    </body>
 </html>

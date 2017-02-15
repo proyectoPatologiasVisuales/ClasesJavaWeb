@@ -18,11 +18,11 @@ public class PatologiasDAO extends GenericDAO{
 		
 		PatologiasDTO patologia_dto = null;
 		
-		int id_patologia = rs.getInt(1);
-		String nombre_patologia = rs.getString(2);
-		String descripcion_patologia = rs.getString(3);
-		String tratamiento_patologia = rs.getString(4);
-		String causa_patologia = rs.getString(5);
+		int id_patologia = rs.getInt("id_patol");
+		String nombre_patologia = rs.getString("nom_patol");
+		String descripcion_patologia = rs.getString("des_patol");
+		String tratamiento_patologia = rs.getString("trat_patol");
+		String causa_patologia = rs.getString("causa_patol");
 		
 		patologia_dto = new PatologiasDTO(id_patologia,nombre_patologia,descripcion_patologia,tratamiento_patologia,causa_patologia);
 		
@@ -32,15 +32,18 @@ public class PatologiasDAO extends GenericDAO{
 	public GenericDTO buscarPatologiaPorID(int id){
 		PatologiasDTO patologia = new PatologiasDTO();
 		List<GenericDTO> lista_sintomas = null;
+		SintomasDAO sintomas_dao = new SintomasDAO();
 		
 		String id_St = String.valueOf(id);
-		String nombre_patologia = null;
+		String nombre_patologia = "\"";
 			try {
 				patologia = (PatologiasDTO) ejecutarConsultaSimple(Consultas.CONSULTA_PATOLOGIAS_POR_ID, id_St);
 				
-				nombre_patologia = patologia.getNombre_patologia();
+				nombre_patologia = nombre_patologia + patologia.getNombre_patologia();
 				
-				//lista_sintomas = ejecutarConsultaMultiple(Consultas.CONSULTA_SINTOMAS_POR_PATOLOGIA, nombre_patologia);
+				nombre_patologia = nombre_patologia + "\"";
+				
+				lista_sintomas = sintomas_dao.seleccionarSintomasPorPatologia(lista_sintomas, nombre_patologia);
 				
 				patologia.setLista_sintomas(lista_sintomas);
 				

@@ -22,9 +22,9 @@ public class Consultas {
 	= "SELECT des_sint From Sintomas Where id_sint IN (Select id_sint From Sintomas Where des_sint = '";
 	
 	public static final String CONSULTA_PATOLOGIAS_POR_SINTOMA 
-	= "SELECT * FROM Patologias WHERE id_patol IN (SELECT id_patol FROM Causas WHERE id_sint IN (SELECT id_sint FROM Sintomas WHERE des_sint = ";
+	= "SELECT * FROM Patologias WHERE id_patol IN (SELECT id_patol FROM PatolSint WHERE id_sint IN (SELECT id_sint FROM Sintomas WHERE des_sint = ";
 	
 	public static final String CONSULTA_SINTOMAS_POR_PATOLOGIA 
-	= "SELECT des_sint FROM Sintomas WHERE id_sint IN (SELECT id_sint FROM PatolSint WHERE id_patol IN (SELECT id_patol FROM Patologias WHERE nom_patol = ";
+	= "SELECT * FROM Sintomas WHERE id_sint IN (SELECT id_sint FROM PatolSint WHERE id_patol IN (SELECT id_patol FROM Patologias WHERE nom_patol = ";
 }
 

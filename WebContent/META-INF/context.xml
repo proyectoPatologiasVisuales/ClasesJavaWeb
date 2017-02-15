@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Context docBase="proyectoweb2" path="/proyectoweb2" reloadable="true">
+<Context docBase="patologiasCompleto" path="/patologiasCompleto" reloadable="true">
 <Resource 
 	name="jdbc/pool" 
 	auth="Container" 

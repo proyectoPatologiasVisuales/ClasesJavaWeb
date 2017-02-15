@@ -15,5 +15,4 @@ public class PatologiaService {
 		
 		return patologiaBuscada;
 	}
-	
 }

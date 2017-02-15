@@ -76,6 +76,7 @@ public abstract class  GenericDAO {
 		{
 			consulta = consulta + argumentos;
 			consulta = consulta + "))";
+			System.out.println(consulta);
 		}
 		
 		try

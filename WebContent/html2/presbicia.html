@@ -9,7 +9,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
- 
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: skyblue ;
+      padding: 25px;
+    }
+H1{size:4 color:pink}
 body{direction:rtl;
      background-image: url(../img/fondo.jpg);
      background-color: rgb(255, 255, 255);
@@ -21,9 +32,17 @@ body{direction:rtl;
      color:#5E6066;
     font-family:GESSTwoLight,GESSTwoMediumRegular,Droid Arabic Kufi,Helvetica,sans-serif;
     font-size:16px}
+	
+	pe {
+  border: silver 27px solid;
+  border-image-source: url("pastilla_60.png");
+  border-image-slice: 27;
+  padding: 10px;
+  text-align: justify;
+}
   </style>
 </head>
-<body  background="../img/fondo.jpg"  width="1500" heigth="1500">
+<body  background="fondo.jpg"  width="1500" heigth="1500">
   
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -37,7 +56,7 @@ body{direction:rtl;
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li class="#">
             <a href="home.html">Inicio</a></li>
         <li><a href="patologias.html">Patologias</a></li>
         <li><a href="test.html">Test</a></li>
@@ -56,29 +75,28 @@ body{direction:rtl;
 </nav>
 <br><br>
 
-
 <div class="container">
-  <CENTER ><h2>CONJUNTIVITIS</h2>
+  <CENTER ><h2>PRESBICIA</h2>
             
     <center><table class="table table-bordered">
     <tbody>
     <tr>
-        <td><img src="../img/conjuntivitis.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">DESCRIPCION</td>
+        <td><img src="../img/presbicia-test.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">DESCRIPCION</td>
     
    
    </tr>
     </tbody>
       <tr>
      
-        <td><center>CAUSAS</center></td>
+          <td><center>CAUSAS</center></td>
       </tr>
       <tr>
-        <td><center>TRATAMIENTO</center></td>
+          <td><center>TRATAMIENTO</center></td>
         
        
       </tr>
       <tr>
-        <td><center>SINTOMAS</center></td>
+          <td><center>SINTOMAS</center></td>
      
         
       </tr>

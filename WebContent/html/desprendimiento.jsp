@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
   <title>MIRATE_EL_OJO</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../img/logoico.ico">
+   <link rel="icon" href="../img/logoico.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -48,7 +50,7 @@ body{direction:rtl;
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li class="#">
             <a href="home.html">Inicio</a></li>
         <li><a href="patologias.html">Patologias</a></li>
         <li><a href="test.html">Test</a></li>
@@ -58,7 +60,7 @@ body{direction:rtl;
      <p>
     <button type="button" class="btn btn-info">
         <a href="busqueda.html">  
-            <span class="glyphicon glyphicon-search"></span> BÃšSQUEDA</a>
+            <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
       </ul>
@@ -68,53 +70,25 @@ body{direction:rtl;
 <br><br>
 
 <div class="container">
-  <CENTER ><h2>GLAUCOMA 1</h2>
+  <CENTER ><h2>DESPRENDIMIENTO</h2>
             
     <center><table class="table table-bordered">
     <tbody>
     <tr>
-        <td><img src="../img/glaucoma-test1.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">DESCRIPCION</td>
-    
-   
+        <td><img src="../img/desprendimiento-test.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">
+         DESCRIPCIÓN <br>${patologia.descripcion_patologia}</td>
    </tr>
     </tbody>
+        <tbody>
       <tr>
      
-        <td><center>CAUSAS</center></td>
+        <td><center>CAUSA <br>${patologia.causa_patologia}</center></td>
       </tr>
       <tr>
-        <td><center>TRATAMIENTO</center></td>
-        
-       
+          <td><center>TRATAMIENTO <br>${patologia.tratamiento_patologia}</center></td>
       </tr>
       <tr>
         <td><center>SINTOMAS</center></td>
-     
-        
-      </tr>
-        </table>
-        <CENTER ><h2>GLAUCOMA 2</h2>
-        <table class="table table-bordered">
-    <tbody>
-    <tr>
-        <td><img src="../img/glaucoma-test2.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">DESCRIPCION</td>
-    
-   
-   </tr>
-    </tbody>
-      <tr>
-     
-        <td><center>CAUSAS</center></td>
-      </tr>
-      <tr>
-        <td><center>TRATAMIENTO</center></td>
-        
-       
-      </tr>
-      <tr>
-        <td><center>SINTOMAS</center></td>
-     
-        
       </tr>
         </table>
       </center>
