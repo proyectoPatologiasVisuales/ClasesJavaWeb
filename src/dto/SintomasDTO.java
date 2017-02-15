@@ -2,8 +2,6 @@ package dto;
 
 import java.util.List;
 
-import dao.GenericDAO;
-
 public class SintomasDTO extends GenericDTO{
 	
 	private int id_sintoma;
@@ -36,4 +34,5 @@ public class SintomasDTO extends GenericDTO{
 	public void setNombre_sintoma(String nombre_sintoma) {
 		this.nombre_sintoma = nombre_sintoma;
 	}
+	
 }

@@ -1,14 +1,18 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
+
 import dto.GenericDTO;
-import herramientas.Pool;
 
 public abstract class  GenericDAO {
 
@@ -16,37 +20,40 @@ public abstract class  GenericDAO {
 	protected Statement stmt;
 	protected ResultSet rset;
 	
-	/**
-	 * Mediante una consulta de sql devuelve un unico objeto de GenericDTO
-	 * @param consulta - Consulta que es introducida cuando se invoca el metodo
-	 * @return
-	 * @throws SQLException
-	 */
-	public GenericDTO ejecutarConsultaSimple(String consulta) throws SQLException	{
-		
+	private final static String cadena_conexion = "jdbc:mysql://localhost:3307/femxa";
+	private final static String user = "adminGXjlxzG";
+	private final static String password = "QBShkFDW_69e";
+	
+
+	public GenericDTO ejecutarConsultaSimple(String consulta,String argumentos) throws Throwable	{
 			GenericDTO dtoAux = null;
-			String consultaTraducida = null;
+			
+			if(argumentos != null)
+			{
+				consulta = consulta + argumentos;
+			}
 			
 			try
 				{
-					conexion = Pool.getConnection();
+					Pool pool = null;
+					pool = Pool.getInstance();
+					conexion  = Pool.getConnection();
 					stmt = conexion.createStatement();
-					stmt.execute(consultaTraducida);
+					stmt.execute(consulta);
 					rset = stmt.getResultSet();
 					if (rset != null)
 					{
 						if (rset.next())
 						{
 							dtoAux = this.componerObjeto(rset);					
-						
 						}
 					}
 			}
 			finally
 			{
 				liberarRecursos(conexion, stmt, rset);
+				//conexionssh.desconectate_D_SSH();
 			}
-									
 			return dtoAux;
 	}
 
@@ -58,33 +65,44 @@ public abstract class  GenericDAO {
 	 * Mediante una consulta de sql devuelve una lista de objetos de GenericDTO
 	 * @param consulta - Consulta que es introducida cuando se invoca el metodo
 	 * @return
-	 * @throws SQLException
+	 * @throws Throwable 
 	 */
-	public List<GenericDTO> ejecutarConsultaMultiple(String consulta) throws SQLException{
-		List<GenericDTO> ldev = null;
+	public List<GenericDTO> ejecutarConsultaMultiple(String consulta,String argumentos) throws Throwable{
+		
+		List<GenericDTO> listadev = new ArrayList<GenericDTO>();
 		GenericDTO dtoAux = null;
+		
+		if(argumentos != null)
+		{
+			consulta = consulta + argumentos;
+			consulta = consulta + "))";
+		}
 		
 		try
 		{
-		conexion = Pool.getConnection();
-		stmt = conexion.createStatement();
-		stmt.execute(consulta);
-		rset = stmt.getResultSet();
+			Pool pool = null;
+			pool = Pool.getInstance();
+			conexion  = Pool.getConnection();
+			stmt = conexion.createStatement();
+			stmt.execute(consulta);
+			rset = stmt.getResultSet();
 		
-			while(rset.next())
+			while (rset.next())
 			{
 				dtoAux = this.componerObjeto(rset);
-				ldev.add(dtoAux);
+				listadev.add(dtoAux);
 			}
 			
-		}catch(Exception e){
-			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 		finally
 		{
 			liberarRecursos(conexion, stmt, rset);
+			//conexionssh.desconectate_D_SSH();
 		}
-		return ldev;
+		return listadev;
 	}
 
 	/**
@@ -93,6 +111,7 @@ public abstract class  GenericDAO {
 	 * @return
 	 * @throws SQLException
 	 */
+	
 	public abstract GenericDTO componerObjeto (ResultSet rs) throws SQLException;
 	 
 	/**
@@ -119,3 +138,4 @@ public abstract class  GenericDAO {
 	}
 	
 }
+
