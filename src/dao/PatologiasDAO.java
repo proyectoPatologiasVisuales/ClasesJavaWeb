@@ -1,20 +1,22 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import consulta.Consultas;
-import dto.GenericDTO;
-import dto.PatologiasDTO;
-import dto.SintomasDTO;
+import dto.*;
 
 
-public class PatologiasDAO extends GenericDAO{
+public class PatologiasDAO {
 
-	@Override
-	public GenericDTO componerObjeto(ResultSet rs) throws SQLException {
+	public PatologiasDTO componerObjeto(ResultSet rs) throws SQLException {
 		
 		PatologiasDTO patologia_dto = null;
 		
@@ -29,7 +31,7 @@ public class PatologiasDAO extends GenericDAO{
 		return patologia_dto;
 	}
 	
-	public GenericDTO buscarPatologiaPorID(int id){
+	/*public GenericDTO buscarPatologiaPorID(int id){
 		PatologiasDTO patologia = new PatologiasDTO();
 		List<GenericDTO> lista_sintomas = null;
 		SintomasDAO sintomas_dao = new SintomasDAO();
@@ -53,16 +55,105 @@ public class PatologiasDAO extends GenericDAO{
 			}
 		
 		return patologia;
+	}*/
+	
+	public Map<Integer, PatologiasDTO> obtenerListaPalogias ()
+	{
+		Map<Integer, PatologiasDTO> mapa_patologia = new HashMap<Integer, PatologiasDTO>();
+		PatologiasDTO pdto_aux = null;
+		
+			 List<Integer> lids = obtenerIDsPatologias ();
+			 
+			 for (Integer i : lids)
+			 {
+				pdto_aux = buscarPorId(i);
+				mapa_patologia.put(i, pdto_aux);
+			
+			 }
+			
+		return mapa_patologia;
 	}
 	
-	public ArrayList<GenericDTO> seleccionarTodasPatologias() throws Throwable{
-		List<GenericDTO> lista_patologias = null;
+	public PatologiasDTO buscarPorId (int id)
+	{
+	PatologiasDTO patologiaDTO = null;
+	Pool pool = null;
+	Connection conexion = null;
+	ResultSet rs = null;
+	PreparedStatement ps = null;
+	SintomasDTO sintomaDTO = null;
+	
+	try{
 		
-		String consulta = Consultas.CONSULTA_LISTAR_PATOLOGIAS;
+	
+		pool = Pool.getInstance();
+		conexion = pool.getConnection();
+		ps = conexion.prepareStatement(Consultas.CONSULTA_PATO_POR_ID);
 		
-		lista_patologias = ejecutarConsultaMultiple(consulta,null);
+		ps.setInt(1, id);
+		ps.setInt(2, id);
 		
-		return (ArrayList<GenericDTO>) lista_patologias;
+		rs = ps.executeQuery();
+		
+		if (rs.next())
+		{
+			patologiaDTO = (PatologiasDTO) componerObjeto(rs);
+		}
+		
+		do
+		{
+			sintomaDTO = SintomasDAO.componerObjeto(rs);
+			patologiaDTO.addSintoma(sintomaDTO);
+			
+		}while (rs.next());
+		
+		
+		
+	} catch (Exception e)
+	{
+		e.printStackTrace();
+		
+	} finally 
+	{
+		pool.liberarRecursos(conexion, ps, rs);
 	}
+	
+	
+	return patologiaDTO;
+}
+	
+		private List<Integer> obtenerIDsPatologias () 
+		{
+			List<Integer> listaids = new ArrayList<Integer>();
+			
+			Pool pool = null;
+			Connection con = null;
+			Statement st = null;
+			ResultSet rs = null;
+			
+			try {
+				
+				pool = Pool.getInstance();
+				con = pool.getConnection();
+				st = con.createStatement();
+				rs = st.executeQuery(Consultas.CONSULTA_ID_PATOLOGIAS);
+				
+					while (rs.next())
+					{
+						listaids.add(rs.getInt(1));
+					}
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				
+				pool.liberarRecursos(con, st, rs);
+				
+			}
+			
+			return listaids;
+			
+		}
 
 }

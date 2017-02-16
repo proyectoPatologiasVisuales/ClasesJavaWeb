@@ -2,7 +2,7 @@ package dto;
 
 import java.util.List;
 
-public class SintomasDTO extends GenericDTO{
+public class SintomasDTO{
 	
 	private int id_sintoma;
 	private String descripcion;

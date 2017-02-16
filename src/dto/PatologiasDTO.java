@@ -1,15 +1,16 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class PatologiasDTO extends GenericDTO{
+public class PatologiasDTO {
 
 	private int id_patologia;
 	private String nombre_patologia;
 	private String descripcion_patologia;
 	private String tratamiento_patologia;
 	private String causa_patologia;
-	private List<GenericDTO> lista_sintomas;
+	private List<SintomasDTO> lista_sintomas;
 	
 	public PatologiasDTO buscarPatologiaPorID(int id){
 		
@@ -28,6 +29,7 @@ public class PatologiasDTO extends GenericDTO{
 		this.descripcion_patologia = descripcion_patologia;
 		this.tratamiento_patologia = tratamiento_patologia;
 		this.causa_patologia = causa_patologia;
+		this.lista_sintomas = new ArrayList<SintomasDTO>();
 	}
 
 	public int getId_patologia() {
@@ -54,10 +56,10 @@ public class PatologiasDTO extends GenericDTO{
 	public void setTratamiento_patologia(String tratamiento_patologia) {
 		this.tratamiento_patologia = tratamiento_patologia;
 	}
-	public List<GenericDTO> getLista_sintomas() {
+	public List<SintomasDTO> getLista_sintomas() {
 		return lista_sintomas;
 	}
-	public void setLista_sintomas(List<GenericDTO> lista_sintomas2) {
+	public void setLista_sintomas(List<SintomasDTO> lista_sintomas2) {
 		this.lista_sintomas = lista_sintomas2;
 	}
 	public String getCausa_patologia() {
@@ -67,4 +69,8 @@ public class PatologiasDTO extends GenericDTO{
 		this.causa_patologia = causa_patologia;
 	}
 	
+	public void addSintoma (SintomasDTO sintomadto)
+	{
+		this.lista_sintomas.add(sintomadto);
+	}
 }

@@ -65,7 +65,7 @@ public class ConsultorPatologiasService {
 	 */
 	public boolean comprobarSintomaEnPatologia(PatologiasDTO patologia,SintomasDTO sintoma_buscado){
 		boolean encontrado = false;
-		List<GenericDTO> lista_sintomas = patologia.getLista_sintomas();
+		List<SintomasDTO> lista_sintomas = patologia.getLista_sintomas();
 		SintomasDTO sintoma_auxiliar = new SintomasDTO();
 		String nombre_sintoma = null;
 		String nombre_sintoma_buscado = sintoma_buscado.getDescripcion();
@@ -73,7 +73,7 @@ public class ConsultorPatologiasService {
 		
 			while(!encontrado && contador<lista_sintomas.size())
 			{
-				sintoma_auxiliar = (SintomasDTO) lista_sintomas.get(contador);
+				sintoma_auxiliar = lista_sintomas.get(contador);
 				nombre_sintoma = sintoma_auxiliar.getDescripcion();
 				
 				if(nombre_sintoma.equals(nombre_sintoma_buscado))
