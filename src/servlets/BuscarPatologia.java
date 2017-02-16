@@ -15,8 +15,8 @@ import servicios.PatologiaService;
 /**
  * Servlet implementation class ObtenerPatologiaPorId
  */
-@WebServlet("/ObtenerPatologia")
-public class ObtenerPatologia extends HttpServlet {
+@WebServlet("/BuscarPatologia")
+public class BuscarPatologia extends HttpServlet {
 	private PatologiaService service_patologia;
 	private PatologiasDTO patologia;
 	
@@ -25,7 +25,7 @@ public class ObtenerPatologia extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ObtenerPatologia() {
+    public BuscarPatologia() {
         super();
 
     }

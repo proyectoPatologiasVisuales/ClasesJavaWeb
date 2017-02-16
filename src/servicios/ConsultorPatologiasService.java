@@ -68,13 +68,13 @@ public class ConsultorPatologiasService {
 		List<GenericDTO> lista_sintomas = patologia.getLista_sintomas();
 		SintomasDTO sintoma_auxiliar = new SintomasDTO();
 		String nombre_sintoma = null;
-		String nombre_sintoma_buscado = sintoma_buscado.getNombre_sintoma();
+		String nombre_sintoma_buscado = sintoma_buscado.getDescripcion();
 		int contador = 0;
 		
 			while(!encontrado && contador<lista_sintomas.size())
 			{
 				sintoma_auxiliar = (SintomasDTO) lista_sintomas.get(contador);
-				nombre_sintoma = sintoma_auxiliar.getNombre_sintoma();
+				nombre_sintoma = sintoma_auxiliar.getDescripcion();
 				
 				if(nombre_sintoma.equals(nombre_sintoma_buscado))
 				{

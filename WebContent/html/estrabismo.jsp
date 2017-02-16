@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -77,9 +78,13 @@ body{direction:rtl;
       <tr>
           <td><center>TRATAMIENTO <br>${patologia.tratamiento_patologia}</center></td>
       </tr>
-      <tr>
-        <td><center>SINTOMAS</center></td>
-      </tr>
+        <tr>
+        <td><center>SINTOMAS</center>
+        <c:forEach items="${patologia.lista_sintomas}" 
+        var="sintoma">
+        ${sintoma.descripcion}<br>
+		</c:forEach>
+     </td>
         </table>
       </center>
     </CENTER>

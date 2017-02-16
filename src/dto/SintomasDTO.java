@@ -5,13 +5,13 @@ import java.util.List;
 public class SintomasDTO extends GenericDTO{
 	
 	private int id_sintoma;
-	private String descripcion_sintoma;
+	private String descripcion;
 	
 	public SintomasDTO(int id_sintoma, String nombre_sintoma)
 	{
 		super();
 		this.id_sintoma = id_sintoma;
-		this.descripcion_sintoma = nombre_sintoma;
+		this.descripcion = nombre_sintoma;
 	}
 
 	public SintomasDTO(){
@@ -19,7 +19,7 @@ public class SintomasDTO extends GenericDTO{
 	}
 	
 	public SintomasDTO(String nombre_sintoma) {
-		this.descripcion_sintoma = nombre_sintoma;
+		this.descripcion = nombre_sintoma;
 	}
 
 	public int getId_sintoma() {
@@ -28,11 +28,11 @@ public class SintomasDTO extends GenericDTO{
 	public void setId_sintoma(int id_sintoma) {
 		this.id_sintoma = id_sintoma;
 	}
-	public String getNombre_sintoma() {
-		return descripcion_sintoma;
+	public String getDescripcion() {
+		return descripcion;
 	}
-	public void setNombre_sintoma(String nombre_sintoma) {
-		this.descripcion_sintoma = nombre_sintoma;
+	public void setDescripcion(String nombre_sintoma) {
+		this.descripcion = nombre_sintoma;
 	}
 	
 }
