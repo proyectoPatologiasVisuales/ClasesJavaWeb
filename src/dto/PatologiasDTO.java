@@ -10,6 +10,7 @@ public class PatologiasDTO {
 	private String descripcion_patologia;
 	private String tratamiento_patologia;
 	private String causa_patologia;
+	private String ruta_imagen_patologia;
 	private List<SintomasDTO> lista_sintomas;
 	
 	public PatologiasDTO buscarPatologiaPorID(int id){
@@ -21,7 +22,7 @@ public class PatologiasDTO {
 	}
 	
 	public PatologiasDTO(int id_patologia, String nombre_patologia,	String descripcion_patologia, 
-			String tratamiento_patologia,String causa_patologia) 
+			String tratamiento_patologia,String causa_patologia,String ruta_imagen_patologia) 
 	{
 		super();
 		this.id_patologia = id_patologia;
@@ -29,6 +30,7 @@ public class PatologiasDTO {
 		this.descripcion_patologia = descripcion_patologia;
 		this.tratamiento_patologia = tratamiento_patologia;
 		this.causa_patologia = causa_patologia;
+		this.ruta_imagen_patologia = ruta_imagen_patologia;
 		this.lista_sintomas = new ArrayList<SintomasDTO>();
 	}
 
@@ -68,7 +70,14 @@ public class PatologiasDTO {
 	public void setCausa_patologia(String causa_patologia) {
 		this.causa_patologia = causa_patologia;
 	}
-	
+	public String getRuta_imagen_patologia() {
+		return ruta_imagen_patologia;
+	}
+
+	public void setRuta_imagen_patologia(String ruta_imagen_patologia) {
+		this.ruta_imagen_patologia = ruta_imagen_patologia;
+	}
+
 	public void addSintoma (SintomasDTO sintomadto)
 	{
 		this.lista_sintomas.add(sintomadto);

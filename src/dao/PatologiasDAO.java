@@ -25,8 +25,9 @@ public class PatologiasDAO {
 		String descripcion_patologia = rs.getString("des_patol");
 		String tratamiento_patologia = rs.getString("trat_patol");
 		String causa_patologia = rs.getString("causa_patol");
+		String ruta_imagen_patologia = rs.getString("imagen");
 		
-		patologia_dto = new PatologiasDTO(id_patologia,nombre_patologia,descripcion_patologia,tratamiento_patologia,causa_patologia);
+		patologia_dto = new PatologiasDTO(id_patologia,nombre_patologia,descripcion_patologia,tratamiento_patologia,causa_patologia,ruta_imagen_patologia);
 		
 		return patologia_dto;
 	}

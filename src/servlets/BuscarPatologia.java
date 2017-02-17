@@ -43,37 +43,7 @@ public class BuscarPatologia extends HttpServlet {
 		
 		request.setAttribute("patologia", patologia);
 		
-		switch (id) {
-		case 1:
-			request.getRequestDispatcher(".//html//queratocono.jsp").forward(request, response);
-			break;
-		case 2:
-			request.getRequestDispatcher(".//html//glaucoma.jsp").forward(request, response);
-			break;
-		case 3:
-			request.getRequestDispatcher(".//html//glaucoma.jsp").forward(request, response);
-			break;
-		case 4:
-			request.getRequestDispatcher(".//html//catarata.jsp").forward(request, response);
-			break;
-		case 5:
-			request.getRequestDispatcher(".//html//conjuntivitis.jsp").forward(request, response);
-			break;
-		case 6:
-			request.getRequestDispatcher(".//html//desprendimiento.jsp").forward(request, response);
-			break;
-		case 7:
-			request.getRequestDispatcher(".//html//acromotopsia.jsp").forward(request, response);
-			break;
-		case 8:
-			request.getRequestDispatcher(".//html//estrabismo.jsp").forward(request, response);
-			break;
-		case 9:
-			request.getRequestDispatcher(".//html//presbicia.jsp").forward(request, response);
-			break;
-		default:
-			break;
-		}
+		request.getRequestDispatcher(".//html//mostrarpatologia.jsp").forward(request, response);
 
 	}
 
