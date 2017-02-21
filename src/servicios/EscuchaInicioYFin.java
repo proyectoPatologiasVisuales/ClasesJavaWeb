@@ -1,6 +1,8 @@
 package servicios;
 
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.ServletContextEvent;
@@ -8,9 +10,9 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import dao.PatologiasDAO;
-import dto.MapaPatologias;
-import dto.PatologiasDTO;
-
+import dao.SintomasDAO;
+import dao.conexionssh;
+import dto.*;
 /**
  * Application Lifecycle Listener implementation class EscuchaInicioYFin
  *
@@ -34,6 +36,7 @@ public class EscuchaInicioYFin implements ServletContextListener {
     	System.out.println("PROGRAMA DESTRUIDO");
     	System.out.println("PROGRAMA DESTRUIDO");
     	
+    	conexionssh.desconectate_D_SSH();
     }
 
 	/**
@@ -46,11 +49,20 @@ public class EscuchaInicioYFin implements ServletContextListener {
     	System.out.println("PROGRAMA INICIADO");
     	try {
 			
+    		conexionssh.conectate_A_SSH();
+    		System.out.println("conectandome a la base de datos");
+    		
 			PatologiasDAO patologiaDAO = new PatologiasDAO();
 			Map<Integer, PatologiasDTO> mapa_patDto = patologiaDAO.obtenerListaPalogias();
-				
+			
+			SintomasDAO sintomasDAO = new SintomasDAO();
+			ArrayList lista_sintomas =  (ArrayList) sintomasDAO.obtenerTodosSintomas();
+			
 				MapaPatologias mapaPatologias = new MapaPatologias();
 				mapaPatologias.setMapapatologia(mapa_patDto);
+				
+				ListadoSintomas listadoSintomas = new ListadoSintomas();
+				listadoSintomas.setMapapatologia(lista_sintomas);
 				
 				System.out.println("Mapa Inicializado");
 				

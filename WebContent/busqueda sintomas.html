@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script>
+
+function cambiar(){
+	var name = document.getElementById("patologiaBuscada").value;
+	alert(name);
+	xmlHttp.open('GET', 'BuscarSintomasPorIniciales', true); //indicamos como vamos a enviar los datos, en este caso con el metodo GET al archivo meses.php?num= el valor que le indiquemos en el textbox
+	xmlHttp.send(null);
+
+}
+
+</script>
+</head>
+<body>
+
+<input type="Text" id="sintomaBuscado" onkeyup="cambiar();">
+
+</body>
+</html>
