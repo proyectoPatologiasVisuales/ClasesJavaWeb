@@ -8,8 +8,8 @@ import dto.SintomasDTO;
 
 public class SintomasService {
 
-	public List<String> buscarSintomaPorInicial(String inicial){
-		List<String> lista_descripcion = new ArrayList<String>();
+	public List<SintomasDTO> buscarSintomaPorInicial(String inicial){
+		List<SintomasDTO> lista_descripcion = new ArrayList<SintomasDTO>();
 		List<SintomasDTO> lista_sintomas = ListadoSintomas.listaSintomasCompleta();
 		String sintoma_descripcion = null;
 		
@@ -21,17 +21,12 @@ public class SintomasService {
 	        
 	        if(sintoma_descripcion.startsWith(inicial)) 
 	        {
-	        	lista_descripcion.add(sintoma_descripcion);
+	        	lista_descripcion.add(sintoma);
 	        }
-			
 		}
-		
-		imprimirLista(lista_descripcion);
 		
 		return lista_descripcion;
 	}
-	
-	
 	
 	public static void imprimirLista(List<String> lista_descripcion)
 	{

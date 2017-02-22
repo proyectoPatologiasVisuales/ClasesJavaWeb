@@ -35,14 +35,10 @@ public class BuscarSintomasPorIniciales extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SintomasService sintomas_service = new SintomasService();
-		ArrayList<String> lista_sintomas = new ArrayList<String>();
-		
 		String valorSintoma = request.getParameter("sintomaBuscado");
-		
-		lista_sintomas = (ArrayList<String>) sintomas_service.buscarSintomaPorInicial(valorSintoma);
-		
-		SintomasService.imprimirLista(lista_sintomas);
+		SintomasService sintomas_service = new SintomasService();
+		List<SintomasDTO> lista_sintomas = null;
+		lista_sintomas =  sintomas_service.buscarSintomaPorInicial(valorSintoma);
 		
 		Gson gson = new Gson();
 		Type tipoListaSintomas = new TypeToken<List<SintomasDTO>>(){}.getType();
