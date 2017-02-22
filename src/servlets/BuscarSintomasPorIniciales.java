@@ -1,6 +1,6 @@
 package servlets;
 
-import java.awt.List;
+import java.util.List;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import dto.SintomasDTO;
 import servicios.SintomasService;
 
 /**
@@ -43,11 +44,13 @@ public class BuscarSintomasPorIniciales extends HttpServlet {
 		
 		SintomasService.imprimirLista(lista_sintomas);
 		
-		
 		Gson gson = new Gson();
-		Type tipoListaSintomas = new TypeToken<List>(){}.getType();
+		Type tipoListaSintomas = new TypeToken<List<SintomasDTO>>(){}.getType();
 		String s = gson.toJson(lista_sintomas, tipoListaSintomas);
-		System.out.println(s);
+		
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(s);
+		
 		
 	}
 
