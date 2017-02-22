@@ -40,5 +40,4 @@ public class SintomasService {
 			System.out.println(descripcion);
 		}
 	}
-	
 }
