@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import dto.PatologiasDTO;
 import servicios.PatologiaService;
 
@@ -21,6 +23,8 @@ public class BuscarPatologia extends HttpServlet {
 	private PatologiasDTO patologia;
 	
 	private static final long serialVersionUID = 1L;
+	
+	private final static Logger log = Logger.getLogger("mylog");
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,7 +48,8 @@ public class BuscarPatologia extends HttpServlet {
 		request.setAttribute("patologia", patologia);
 		
 		request.getRequestDispatcher(".//html//mostrarpatologia.jsp").forward(request, response);
-
+		
+		log.info("Total de bytes leídos = ");
 	}
 
 	/**
