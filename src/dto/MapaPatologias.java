@@ -26,6 +26,10 @@ public class MapaPatologias {
 		mapapatologia.put(id, pdto);
 	}
 	
+	public static  Map<Integer, PatologiasDTO> obtenerMapapatologia(){
+		return mapapatologia;
+	}
+	
 	public static PatologiasDTO getPatologia (Integer id)
 	{
 		return mapapatologia.get(id);

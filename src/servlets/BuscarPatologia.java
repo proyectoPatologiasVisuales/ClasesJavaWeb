@@ -31,7 +31,6 @@ public class BuscarPatologia extends HttpServlet {
      */
     public BuscarPatologia() {
         super();
-
     }
 
 	/**

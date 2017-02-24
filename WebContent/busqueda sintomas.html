@@ -15,7 +15,7 @@ function cambiar(){
 
 	
 	var cadena = document.getElementById("sintomaBuscado").value;
-	if (cadena != '') //llamo sólo si ha introducido algo: OPTIMIZO
+	if (cadena != '') 
 	{
 		xmlHttp = iniciaObjetoRequest();
 		xmlHttp.onreadystatechange = procesarEventos;
@@ -26,7 +26,10 @@ function cambiar(){
 
 function seleccionaSintoma (text)
 {
-	alert (text);
+	xmlHttp = iniciaObjetoRequest();
+	xmlHttp.onreadystatechange = procesarEventos;
+	xmlHttp.open('GET', 'BuscarPatologiasPorSintoma?sintomaIntroducido='+text, true); //indicamos como vamos a enviar los datos, en este caso con el metodo GET al archivo meses.php?num= el valor que le indiquemos en el textbox
+	xmlHttp.send(null);
 }
 
 function procesarEventos()
@@ -36,7 +39,6 @@ function procesarEventos()
   {
       if(xmlHttp.status==200)// y el código de la cabecera http es bueno
           {
-			alert("He recibido " + xmlHttp.responseText);
 			
 			var raiz = document.getElementById("raizul");
 			raiz.innerHTML = "";

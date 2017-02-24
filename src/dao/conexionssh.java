@@ -7,8 +7,8 @@ import com.jcraft.jsch.Session;
 
 public class conexionssh {
 
-	private final static String S_PATH_FILE_PRIVATE_KEY = "C:\\Users\\Administrador\\workspace\\proyectoweb2\\id_rsa.ppk";
-	private final static String S_PATH_FILE_KNOWN_HOSTS = "C:\\Users\\Administrador\\workspace\\proyectoweb2\\known_hosts";
+	private final static String S_PATH_FILE_PRIVATE_KEY = "C:\\Users\\Administrador\\git\\ClasesJavaWeb\\id_rsa.ppk";
+	private final static String S_PATH_FILE_KNOWN_HOSTS = "C:\\Users\\Administrador\\git\\ClasesJavaWeb\\known_hosts";
 	private final static String S_PASS_PHRASE = "mypassphrase";
 	private final static int LOCAl_PORT = 3308; 
 	private final static int REMOTE_PORT = 3306; 
@@ -18,7 +18,6 @@ public class conexionssh {
 	private final static String MYSQL_REMOTE_SERVER = "127.11.220.2";
 	private static Session sesion; //represents each ssh session
 
-	
 	public static void conectate_A_SSH () throws Throwable
 	{
 		JSch jsch = new JSch();
@@ -29,7 +28,6 @@ public class conexionssh {
         sesion.connect(); //ssh connection established!
 
         sesion.setPortForwardingL(LOCAl_PORT, MYSQL_REMOTE_SERVER, REMOTE_PORT); 
-
 
 	}
 	
